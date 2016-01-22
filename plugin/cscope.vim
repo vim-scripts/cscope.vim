@@ -79,6 +79,7 @@ if exists('g:cscope_ignore_strict') && g:cscope_ignore_strict == 1
   let g:cscope_ignore_files = g:cscope_ignore_files.'\|\.xml$\|\.yml$\|\.ini$\|\.conf$\|\.css$\|\.htc$\|\.bat$\|\.sh$\|\.txt$\|\.log$\|\.dtd$\|\.xsd$'
 endif
 
+let g:cscope_clang_files = '\.h$\|\.hpp$\|\.c$\|\.cpp$\|\.cc$'
 let s:cscope_vim_dir = substitute($HOME,'\\','/','g')."/.cscope.vim"
 let s:index_file = s:cscope_vim_dir.'/index'
 
@@ -98,7 +99,7 @@ function! s:ListFiles(dir)
         continue
       elseif fn =~ g:cscope_ignore_files
         continue
-      else
+      elseif fn =~ g:cscope_clang_files
         if stridx(fn, ' ') != -1
           let fn = '"'.fn.'"'
         endif
