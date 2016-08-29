@@ -1,7 +1,7 @@
 This is a mirror of http://www.vim.org/scripts/script.php?script_id=4082
 
 # Introduction
-Cscove(new name for this plugin, since cscope.vim is used too widely.) is a
+**Cscove** (new name for this plugin, since cscope.vim is used too widely) is a
 smart cscope helper for vim.
 
 It will try to find a proper cscope database for current file, then connect to
@@ -17,10 +17,11 @@ used for, the plugin will connect to the cscope database automatically. You
 need not take care of anything about cscope database.
 
 When you have a file edited/added in those folders for which cscope databases
-have been created, cscove will automatically update the corresponding database.
+have been created, **cscove** will automatically update the corresponding 
+database.
 
-Cscove frees you from creating/connecting/updating cscope database, let you
-focus on code browsing.
+**Cscove** frees you from creating/connecting/updating cscope database, let 
+you focus on code browsing.
 
 # Example settings
 The default key mappings has been removed from the plugin itself, since users
@@ -31,6 +32,7 @@ Below is the minimum key mappings.
 
     nnoremap <leader>fa :call cscope#findInteractive(expand('<cword>'))<CR>
     nnoremap <leader>l :call ToggleLocationList()<CR>
+
 
 Some optional key mappings to search directly.
 
