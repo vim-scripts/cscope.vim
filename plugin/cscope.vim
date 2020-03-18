@@ -15,6 +15,10 @@ if !exists('g:cscope_open_location')
   let g:cscope_open_location = 1
 endif
 
+if !exists('g:cscope_use_quickfix')
+  let g:cscope_use_quickfix = 0
+endif
+
 function! s:Echo(msg)
   if g:cscope_silent == 0
     echo a:msg
@@ -274,10 +278,18 @@ function! cscope#find(action, word)
     call <SID>updateDBs(dirtyDirs)
   endif
   call <SID>AutoloadDB(expand('%:p:h'))
+  let l:search_command = 'lcs'
+  if g:cscope_use_quickfix == 1
+    let l:search_command = 'cs'
+  endif
   try
-    exe ':lcs f '.a:action.' '.a:word
+    exe ':'.search_command.' f '.a:action.' '.a:word
     if g:cscope_open_location == 1
-      lw
+      if g:cscope_use_quickfix == 1
+        botright cwindow
+      else
+        lw
+      endif
     endif
   catch
     echohl WarningMsg | echo 'Can not find '.a:word.' with querytype as '.a:action.'.' | echohl None
